@@ -2,6 +2,8 @@
 
 public class PlayerMovent : MonoBehaviour
 {
+    
+    
     // ============================================================================================= 'Private' Variables
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Transform _playerCam; 
@@ -13,6 +15,7 @@ public class PlayerMovent : MonoBehaviour
     // =========================================================================================================== Start
     void Start()
     {
+        
     }
 
     // ========================================================================================================== Update
