@@ -7,12 +7,13 @@ using UnityEngine;
 public class DayNightCycler : MonoBehaviour
 {
     [SerializeField] private Transform _sun;
+    [SerializeField] private bool _cycle = true;
     [SerializeField] private float _speedDay = 0.5f;
     [SerializeField] private float _speedNight = 0.1f;
-    [SerializeField] private float _currentSpeed;
-    [SerializeField] private Vector3 _rotation;
-    [SerializeField] private bool _isDay = true;
-    [SerializeField] private bool _cycle = true;
+    
+    private float _currentSpeed;
+    private Vector3 _rotation;
+    private bool _isDay = true;
     
     // Start is called before the first frame update
     void Start()
