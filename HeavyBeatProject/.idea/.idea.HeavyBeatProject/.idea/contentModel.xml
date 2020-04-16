@@ -32,6 +32,11 @@
             <e p="PlayerId.cs" t="Include" />
             <e p="PlayerMovent.cs" t="Include" />
           </e>
+          <e p="Scenes" t="Include">
+            <e p="SceneController.cs" t="Include" />
+            <e p="SceneResetter.cs" t="Include" />
+            <e p="SplashScreenController.cs" t="Include" />
+          </e>
           <e p="Shooting" t="Include">
             <e p="Projectile.cs" t="Include" />
             <e p="Shooter.cs" t="Include" />
