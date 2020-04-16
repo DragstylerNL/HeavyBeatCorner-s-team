@@ -10,6 +10,7 @@
         <e p="_Scripts" t="Include">
           <e p="DeleteME.txt" t="Include" />
           <e p="MistController.cs" t="Include" />
+          <e p="SpawnController.cs" t="Include" />
         </e>
         <e p="ZZ_RenderPipeline" t="Include">
           <e p="Scripts" t="Include">
