@@ -35,6 +35,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start() {
+        Play("sfx_backgroundNoise");
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            Play("sfx_gunCharging");
+        }
+    }
+
     public void Play(string name)
     {
         Sound s = Array.Find(sounds.soundCollection, Sound => Sound.name == name);

@@ -11,14 +11,22 @@ public class SpawnController : MonoBehaviour {
     [SerializeField] private GameObject[] _spawnLocations;
 
     private List<GameObject> _enemies = new List<GameObject>();
+    
+    // References.
+    private AudioManager _audioManager;
+
+    private void Start() {
+        _audioManager = FindObjectOfType<AudioManager>();
+    }
 
     private void Update() {
-        // if (Input.GetKeyDown(KeyCode.S)) {
-        //     SpawnEnemy();
-        // }
+        if (Input.GetKeyDown(KeyCode.J)) {
+            SpawnEnemy();
+        }
     }
 
     private void SpawnEnemy() {
+        _audioManager.Play("sfx_enemySpawn");
         GameObject enemy = Instantiate(GetRandomEnemy());
         enemy.transform.position = GetRandomLocation();
         AddEnemyToList(enemy);

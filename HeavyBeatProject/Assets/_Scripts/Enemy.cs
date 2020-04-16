@@ -11,10 +11,13 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] private GameObject[] _players;
     private Dictionary<GameObject, bool> _playerHitMap;
-
+    
+    // References.
+    private AudioManager _audioManager;
 
     private void Start() {
         InitializePlayerHitMap();
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update() {
@@ -61,14 +64,20 @@ public class Enemy : MonoBehaviour {
         //  && _leewayCounter > 0 && _leewayCounter < _leewayTime
         if (check && _leewayCounter > 0 && _leewayCounter < _leewayTime) {
             print("Destroying enemy");
-            Destroy(gameObject);
+            DestroyUnit();
         }
+    }
+
+    private void DestroyUnit() {
+        _audioManager.Play("sfx_enemyDeath");
+        Destroy(gameObject);
     }
 
     private bool AllPlayerHit() {
         for (int i = 0; i < _amountOfPlayers; i++) {
             if (!_playerHitMap[_players[i]]) {
                 print("Player " + (i + 1) + " hit is " + _playerHitMap[_players[i]]);
+                _audioManager.Play("sfx_enemyHit");
                 return false;
             }
             print("Player " + (i + 1) + " hit is " + _playerHitMap[_players[i]]);
