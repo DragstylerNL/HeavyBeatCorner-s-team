@@ -25,13 +25,11 @@ public class Enemy : MonoBehaviour {
         
         for (int i = 0; i < _amountOfPlayers; i++) {
             _playerHitMap[_players[i]] = false;
-            print("Player " + i + "value: " + _playerHitMap[_players[i]]);
         }
     }
 
-    private void SetPlayerHit(int id) {
+    public void SetPlayerHit(int id) {
         _playerHitMap[_players[id]] = true;
-        print("Player " + _players[id].gameObject.name + " has hit " + gameObject);
         CheckIfDestroy();
     }
 
@@ -51,7 +49,7 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-
-        print("Not yet destroyed");
     }
+
+
 }

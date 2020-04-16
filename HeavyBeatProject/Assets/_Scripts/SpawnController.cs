@@ -13,9 +13,9 @@ public class SpawnController : MonoBehaviour {
     private List<GameObject> _enemies = new List<GameObject>();
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            SpawnEnemy();
-        }
+        // if (Input.GetKeyDown(KeyCode.S)) {
+        //     SpawnEnemy();
+        // }
     }
 
     private void SpawnEnemy() {

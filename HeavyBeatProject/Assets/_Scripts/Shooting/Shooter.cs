@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This script on the player camera/gun, not the player object.
 public class Shooter : MonoBehaviour
 {
     [SerializeField] private GameObject _projectile;
@@ -22,6 +23,10 @@ public class Shooter : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            Reload();
         }
     }
 

@@ -8,9 +8,19 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_Scripts" t="Include">
-          <e p="DeleteME.txt" t="Include" />
+          <e p="DayNight" t="Include">
+            <e p="DayNightCycler.cs" t="Include" />
+          </e>
           <e p="Enemy.cs" t="Include" />
           <e p="MistController.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="PlayerCollection.cs" t="Include" />
+            <e p="PlayerMovent.cs" t="Include" />
+          </e>
+          <e p="Shooting" t="Include">
+            <e p="Projectile.cs" t="Include" />
+            <e p="Shooter.cs" t="Include" />
+          </e>
           <e p="SpawnController.cs" t="Include" />
         </e>
         <e p="ZZ_RenderPipeline" t="Include">
