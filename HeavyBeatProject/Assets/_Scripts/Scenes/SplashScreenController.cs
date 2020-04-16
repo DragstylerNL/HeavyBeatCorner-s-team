@@ -5,17 +5,17 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 public class SplashScreenController : MonoBehaviour {
-    private AudioManager _audioManager;
+    [SerializeField] private AudioSource _source;
+    [SerializeField] private AudioClip _clip;
     
     IEnumerator Start()
     {
         SplashScreen.Begin();
-        _audioManager = FindObjectOfType<AudioManager>();
-        _audioManager.Play("");
+        _source.clip = _clip;
+        _source.Play();
         while (!SplashScreen.isFinished) {
             SplashScreen.Draw();
             yield return null;
         }
-        Debug.Log("Finished showing splash screen");
     }
 }
