@@ -29,6 +29,10 @@ public class Shooter : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0)) {
+            if (_currentBulletAmount <= 0) {
+                _audioManager.Play("sfx_gunCharging01");
+                return;
+            }
             _audioManager.Play("sfx_gunCharging");
         }
 
@@ -40,7 +44,6 @@ public class Shooter : MonoBehaviour
     private void Shoot() {
         _audioManager.Stop("sfx_gunCharging");
         if (_currentBulletAmount <= 0) {
-            _audioManager.Play("sfx_gunEmpty");
             return;
         }
             

@@ -954,6 +954,7 @@ MonoBehaviour:
   _minHeight: 0
   _maxHeight: 6
   _heightStep: 0.3
+  _dangerHeight: 1.5
 --- !u!4 &2122126765
 Transform:
   m_ObjectHideFlags: 0
