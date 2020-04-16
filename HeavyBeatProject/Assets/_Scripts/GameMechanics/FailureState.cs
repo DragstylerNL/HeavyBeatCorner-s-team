@@ -18,10 +18,12 @@ public class FailureState : MonoBehaviour {
     
     // References.
     private SpawnController _spawnController;
+    private AudioManager _audioManager;
 
     private void Start() {
         _spawnController = FindObjectOfType<SpawnController>();
         _spawnController.EnemySpawned += AddEnemyToList;
+        _audioManager = FindObjectOfType<AudioManager>();
 
         ResetCounter();
         HideCounter();
@@ -43,6 +45,7 @@ public class FailureState : MonoBehaviour {
         if (_counter <= 0) {
             RemoveEnemyFromList();
             ResetCounter();
+            _audioManager.Play("sfx_enemyMistTransform");
             
             if (FailedToKillEnemy != null) {
                 FailedToKillEnemy();

@@ -12,23 +12,19 @@ public class SpawnController : MonoBehaviour {
 
     private List<GameObject> _enemies = new List<GameObject>();
     
-<<<<<<< HEAD:HeavyBeatProject/Assets/_Scripts/SpawnController.cs
+    // Action
+    public Action<GameObject> EnemySpawned;
+
     // References.
     private AudioManager _audioManager;
 
     private void Start() {
         _audioManager = FindObjectOfType<AudioManager>();
     }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.J)) {
-=======
-    // Action
-    public Action<GameObject> EnemySpawned;
+    
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.B)) {
->>>>>>> e0027d62ea0ec43776c7d420c61e4128dcf55c96:HeavyBeatProject/Assets/_Scripts/GameMechanics/SpawnController.cs
             SpawnEnemy();
         }
     }

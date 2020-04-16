@@ -16,13 +16,6 @@
           <e p="DayNight" t="Include">
             <e p="DayNightCycler.cs" t="Include" />
           </e>
-<<<<<<< HEAD
-          <e p="Enemy.cs" t="Include" />
-          <e p="Invisible" t="Include">
-            <e p="Ghostifier.cs" t="Include" />
-          </e>
-          <e p="MistController.cs" t="Include" />
-=======
           <e p="Enemy" t="Include">
             <e p="Enemy.cs" t="Include" />
           </e>
@@ -31,7 +24,9 @@
             <e p="MistController.cs" t="Include" />
             <e p="SpawnController.cs" t="Include" />
           </e>
->>>>>>> e0027d62ea0ec43776c7d420c61e4128dcf55c96
+          <e p="Invisible" t="Include">
+            <e p="Ghostifier.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
             <e p="PlayerCollection.cs" t="Include" />
             <e p="PlayerId.cs" t="Include" />
