@@ -11,17 +11,24 @@ public class SpawnController : MonoBehaviour {
     [SerializeField] private GameObject[] _spawnLocations;
 
     private List<GameObject> _enemies = new List<GameObject>();
+    
+    // Action
+    public Action<GameObject> EnemySpawned;
 
     private void Update() {
-        // if (Input.GetKeyDown(KeyCode.S)) {
-        //     SpawnEnemy();
-        // }
+        if (Input.GetKeyDown(KeyCode.B)) {
+            SpawnEnemy();
+        }
     }
 
     private void SpawnEnemy() {
         GameObject enemy = Instantiate(GetRandomEnemy());
         enemy.transform.position = GetRandomLocation();
         AddEnemyToList(enemy);
+        
+        if (EnemySpawned != null) {
+            EnemySpawned(enemy);
+        }
     }
 
     // Adds given enemy to our enemy list.

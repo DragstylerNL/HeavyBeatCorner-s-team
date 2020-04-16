@@ -15,14 +15,21 @@ public class MistController : MonoBehaviour {
 
    private float _currentHeight;
    
+   // Action.
    public Action<float> CurrentMistHeight;
+   
+   // References.
+   private FailureState _failureState;
 
+   private void Start() {
+      _failureState = FindObjectOfType<FailureState>();
+      _failureState.FailedToKillEnemy += ReduceHeight;
+   }
 
    private void Update() {
-      // Dev testing.
-      // if (Input.GetKeyDown(KeyCode.D)) {
-      //    ReduceHeight();
-      // }
+      if (Input.GetKeyDown(KeyCode.N)) {
+         SetHeight(1f);
+      }
    }
 
    //  Increases the height by _heightStep.
@@ -36,6 +43,8 @@ public class MistController : MonoBehaviour {
    private void ReduceHeight() {
       Vector3 newHeight = _mist.transform.position;
       newHeight.y -= _heightStep;
+      _currentHeight = newHeight.y;
+      print("Mist is now at " + newHeight.y);
       _mist.transform.position = newHeight;
    }
 
@@ -55,7 +64,7 @@ public class MistController : MonoBehaviour {
       newHeight.y = h;
       _currentHeight = h;
       _mist.transform.position = newHeight;
-      
+      print("Mist is now at " + newHeight.y);
       if (CurrentMistHeight != null) {
          CurrentMistHeight(_currentHeight);
       }
@@ -64,5 +73,9 @@ public class MistController : MonoBehaviour {
    // Returns the current height.
    private float GetCurrentHeight() {
       return _currentHeight;
+   }
+
+   private void OnDestroy() {
+      _failureState.FailedToKillEnemy -= ReduceHeight;
    }
 }
