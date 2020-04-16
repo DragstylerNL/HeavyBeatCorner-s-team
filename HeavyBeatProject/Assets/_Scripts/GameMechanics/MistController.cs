@@ -18,19 +18,33 @@ public class MistController : MonoBehaviour {
 
    private float _currentHeight;
    
+   // Action.
    public Action<float> CurrentMistHeight;
    
    // References.
+<<<<<<< HEAD:HeavyBeatProject/Assets/_Scripts/MistController.cs
    private AudioManager _audioManager;
 
    private void Start() {
       _audioManager = FindObjectOfType<AudioManager>();
    }
+=======
+   private FailureState _failureState;
+>>>>>>> e0027d62ea0ec43776c7d420c61e4128dcf55c96:HeavyBeatProject/Assets/_Scripts/GameMechanics/MistController.cs
 
+   private void Start() {
+      _failureState = FindObjectOfType<FailureState>();
+      _failureState.FailedToKillEnemy += ReduceHeight;
+   }
 
    private void Update() {
+<<<<<<< HEAD:HeavyBeatProject/Assets/_Scripts/MistController.cs
       if (Input.GetKeyDown(KeyCode.M)) {
          SetHeight(1.4f);
+=======
+      if (Input.GetKeyDown(KeyCode.N)) {
+         SetHeight(1f);
+>>>>>>> e0027d62ea0ec43776c7d420c61e4128dcf55c96:HeavyBeatProject/Assets/_Scripts/GameMechanics/MistController.cs
       }
    }
 
@@ -45,6 +59,8 @@ public class MistController : MonoBehaviour {
    private void ReduceHeight() {
       Vector3 newHeight = _mist.transform.position;
       newHeight.y -= _heightStep;
+      _currentHeight = newHeight.y;
+      print("Mist is now at " + newHeight.y);
       _mist.transform.position = newHeight;
    }
 
@@ -64,11 +80,15 @@ public class MistController : MonoBehaviour {
       newHeight.y = h;
       _currentHeight = h;
       _mist.transform.position = newHeight;
+<<<<<<< HEAD:HeavyBeatProject/Assets/_Scripts/MistController.cs
       
       if (_currentHeight < _dangerHeight) {
          _audioManager.Play("sfx_heartBeat");
       }
       
+=======
+      print("Mist is now at " + newHeight.y);
+>>>>>>> e0027d62ea0ec43776c7d420c61e4128dcf55c96:HeavyBeatProject/Assets/_Scripts/GameMechanics/MistController.cs
       if (CurrentMistHeight != null) {
          CurrentMistHeight(_currentHeight);
       }
@@ -77,5 +97,9 @@ public class MistController : MonoBehaviour {
    // Returns the current height.
    private float GetCurrentHeight() {
       return _currentHeight;
+   }
+
+   private void OnDestroy() {
+      _failureState.FailedToKillEnemy -= ReduceHeight;
    }
 }

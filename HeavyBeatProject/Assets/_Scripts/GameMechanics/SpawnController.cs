@@ -12,6 +12,7 @@ public class SpawnController : MonoBehaviour {
 
     private List<GameObject> _enemies = new List<GameObject>();
     
+<<<<<<< HEAD:HeavyBeatProject/Assets/_Scripts/SpawnController.cs
     // References.
     private AudioManager _audioManager;
 
@@ -21,6 +22,13 @@ public class SpawnController : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.J)) {
+=======
+    // Action
+    public Action<GameObject> EnemySpawned;
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.B)) {
+>>>>>>> e0027d62ea0ec43776c7d420c61e4128dcf55c96:HeavyBeatProject/Assets/_Scripts/GameMechanics/SpawnController.cs
             SpawnEnemy();
         }
     }
@@ -30,6 +38,10 @@ public class SpawnController : MonoBehaviour {
         GameObject enemy = Instantiate(GetRandomEnemy());
         enemy.transform.position = GetRandomLocation();
         AddEnemyToList(enemy);
+        
+        if (EnemySpawned != null) {
+            EnemySpawned(enemy);
+        }
     }
 
     // Adds given enemy to our enemy list.
