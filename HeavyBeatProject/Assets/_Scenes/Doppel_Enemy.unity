@@ -251,9 +251,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 3371441080587148089, guid: f735ee89b292a5b4b8dbc1687c8e3aa1,
     type: 3}
-  _projectileSpeed: 0.1
+  _projectileSpeed: 0.01
   _bulletAmount: 3
   _currentBulletAmount: 0
+  _id: 0
 --- !u!1001 &305965400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ GameObject:
   - component: {fileID: 1014010527}
   - component: {fileID: 1014010532}
   - component: {fileID: 1014010531}
+  - component: {fileID: 1014010533}
   m_Layer: 0
   m_Name: Player_Doppel
   m_TagString: Untagged
@@ -531,6 +533,68 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1014010533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014010526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586951fe194ab4fb40ee42c5dc1f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerId: 0
+--- !u!1 &1072015103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072015104}
+  - component: {fileID: 1072015105}
+  m_Layer: 0
+  m_Name: fakeObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1072015104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072015103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1709733658}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072015105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072015103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65ce3040e21ed042bd718a12ba30443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 3371441080587148089, guid: f735ee89b292a5b4b8dbc1687c8e3aa1,
+    type: 3}
+  _projectileSpeed: 0.01
+  _bulletAmount: 3
+  _currentBulletAmount: 0
+  _id: 0
 --- !u!1 &1421047458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 92647991005430525, guid: 9844547a907750b4ab08ddc8ffa8863f,
@@ -549,9 +613,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1bc43f8199af34b8f7892bcf5ceaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountOfPlayers: 1
+  _amountOfPlayers: 2
+  _leewayTime: 0.8
   _players:
   - {fileID: 1014010526}
+  - {fileID: 1709733654}
 --- !u!1 &1709733654
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +630,7 @@ GameObject:
   - component: {fileID: 1709733657}
   - component: {fileID: 1709733656}
   - component: {fileID: 1709733655}
+  - component: {fileID: 1709733659}
   m_Layer: 0
   m_Name: Player_Steven
   m_TagString: Untagged
@@ -638,13 +705,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709733654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.949338, y: -2.9405885, z: 0.7055364}
+  m_LocalRotation: {x: 0, y: 0.71915793, z: 0, w: 0.6948467}
+  m_LocalPosition: {x: -2.14, y: 0.2, z: 3.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1072015104}
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.97, z: 0}
+--- !u!114 &1709733659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709733654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586951fe194ab4fb40ee42c5dc1f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerId: 1
 --- !u!1 &2122126763
 GameObject:
   m_ObjectHideFlags: 0

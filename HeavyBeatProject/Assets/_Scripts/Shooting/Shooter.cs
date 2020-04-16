@@ -10,10 +10,12 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float _projectileSpeed = 0.1f;
     [SerializeField] private int _bulletAmount = 3;
     [SerializeField] private int _currentBulletAmount;
+    [SerializeField] private int _id;
 
     void Start()
     {
         Reload();
+        _id = GetComponentInParent<PlayerId>().GetPlayerId();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class Shooter : MonoBehaviour
         if (_currentBulletAmount <= 0) return;
             
         GameObject projectile = Instantiate(_projectile, transform.position, transform.rotation);
+        projectile.GetComponent<Projectile>().SetPlayerId(_id);
         projectile.GetComponent<Projectile>().MovementDirection = transform.TransformDirection(Vector3.forward) * _projectileSpeed;
         _currentBulletAmount--;
     }

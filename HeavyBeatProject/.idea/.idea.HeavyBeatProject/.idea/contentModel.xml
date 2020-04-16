@@ -15,6 +15,7 @@
           <e p="MistController.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="PlayerCollection.cs" t="Include" />
+            <e p="PlayerId.cs" t="Include" />
             <e p="PlayerMovent.cs" t="Include" />
           </e>
           <e p="Shooting" t="Include">
