@@ -18,6 +18,8 @@
           </e>
           <e p="Enemy" t="Include">
             <e p="Enemy.cs" t="Include" />
+            <e p="EnemyDeathMist.cs" t="Include" />
+            <e p="EnemyShaderSpawn.cs" t="Include" />
           </e>
           <e p="GameMechanics" t="Include">
             <e p="FailureState.cs" t="Include" />

@@ -9,6 +9,8 @@ public class FailureState : MonoBehaviour {
     [SerializeField] private float _killTime = 10f;
     [Tooltip("Drag Text Mesh Pro UI object here.")]
     [SerializeField] private TextMeshProUGUI _counterText;
+    [Tooltip("Drag prefab here when failed to kill enemy")]
+    [SerializeField] private GameObject _dissolvePrefab;
     
     private List<GameObject> _enemies = new List<GameObject>();
     private float _counter;
@@ -43,9 +45,13 @@ public class FailureState : MonoBehaviour {
     // Counts down and adjusts UI element.
     private void Countdown() {
         if (_counter <= 0) {
+            GameObject pre = Instantiate(_dissolvePrefab);
+            pre.transform.position = _enemies[0].transform.position;
+            Destroy(_enemies[0].gameObject);
             RemoveEnemyFromList();
             ResetCounter();
             _audioManager.Play("sfx_enemyMistTransform");
+            _audioManager.Play("sfx_sirene");
             
             if (FailedToKillEnemy != null) {
                 FailedToKillEnemy();

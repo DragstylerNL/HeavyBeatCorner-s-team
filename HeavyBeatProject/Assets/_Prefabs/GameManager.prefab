@@ -88,3 +88,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _killTime: 10
   _counterText: {fileID: 0}
+  _dissolvePrefab: {fileID: 1086595745575395473, guid: 55c593a25c2a9634aae5cce29857aaf1,
+    type: 3}

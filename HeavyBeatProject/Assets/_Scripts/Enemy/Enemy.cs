@@ -21,10 +21,6 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.X)) {
-            SetPlayerHit(0);
-        }
-
         if (_isCountingLeeway) {
             if (_leewayCounter >= _leewayTime) {
                 ResetLeewayCounter();
