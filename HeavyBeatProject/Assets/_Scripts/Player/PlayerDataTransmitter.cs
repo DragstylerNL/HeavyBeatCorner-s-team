@@ -12,16 +12,19 @@ public class PlayerDataTransmitter : NetworkBehaviour
 
     [SyncVar] public int health = 100;
     [SyncVar] public int Playerstate = 0;
+    [SyncVar] public float _dayNightCycle = 0;
     private bool _beenActivated = false;
     
     private int lastKnownHealth = -1;
     private NetworkIdentity _identity;
+    private DayNightCycler _cycler;
 
     private void Start()
     {
         _identity = GetComponent<NetworkIdentity>();
+        _cycler = GameObject.Find("Directional Light ").GetComponent<DayNightCycler>();
     }
-
+    
     private void Update()
     {
         if (lastKnownHealth != health)
@@ -30,7 +33,6 @@ public class PlayerDataTransmitter : NetworkBehaviour
             lastKnownHealth = health;
         }
 
-        StateText.text = Playerstate.ToString();
         
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -40,6 +42,13 @@ public class PlayerDataTransmitter : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             SetStateToActive();
+        }
+
+        if (isServer)
+        {
+            _dayNightCycle = _cycler._sun.rotation.x;
+            StateText.text = _dayNightCycle + " ";
+            RpcDayNightCycle(_dayNightCycle);
         }
     }
 
@@ -93,6 +102,11 @@ public class PlayerDataTransmitter : NetworkBehaviour
     private void RpcSetState()
     {
         Playerstate = 1;
+    } 
+    [ClientRpc]
+    private void RpcDayNightCycle(float value)
+    {
+        _dayNightCycle = value;
     }
     
 }
