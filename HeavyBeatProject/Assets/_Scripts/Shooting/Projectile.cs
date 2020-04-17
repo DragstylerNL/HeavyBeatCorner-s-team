@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Enemy")) {
-            other.gameObject.GetComponent<Enemy>().SetPlayerHit(_id);
+            other.gameObject.GetComponent<Enemy>().GotHit();
             Destroy(gameObject);
         } else if (other.gameObject.CompareTag("Environment")) {
             Destroy(gameObject);
