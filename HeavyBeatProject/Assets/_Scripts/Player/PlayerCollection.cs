@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class PlayerCollection : NetworkBehaviour
 {
     [SerializeField] private Behaviour[] _toDisable;
+    [SerializeField] private GameObject _gameObject;
 
     public override void OnStartClient()
     {
@@ -35,5 +36,6 @@ public class PlayerCollection : NetworkBehaviour
         {
             b.enabled = false;
         }
+        _gameObject.SetActive(false);
     }
 }
