@@ -8,10 +8,11 @@ public class PlayerDataTransmitter : NetworkBehaviour
     public Text healthtText;
 
     [SyncVar] public int health = 100;
-    [SyncVar] public int State = 0;
+    [SyncVar] public bool Player1stateActive = false;
+    [SyncVar] public bool Player2stateActive = false;
     private int lastKnownHealth = -1;
 
-    private void Update()
+        private void Update()
     {
         if (lastKnownHealth != health)
         {
@@ -25,7 +26,7 @@ public class PlayerDataTransmitter : NetworkBehaviour
         }
     }
 
-    private void TakeDamage()
+    public void TakeDamage()
     {
         if (isServer)
         {
@@ -34,14 +35,35 @@ public class PlayerDataTransmitter : NetworkBehaviour
         else
         {
             health = int.Parse(healthtText.text) - damage;
-            CmdFunction(health);
+            CmdFunction();
         }
     }
-    
+
     [Command]
-    public void CmdFunction(int value)
+    private void CmdFunction()
     {
         GameManager._players["1"].GetComponent<PlayerDataTransmitter>().health-=damage;
         GameManager._players["2"].GetComponent<PlayerDataTransmitter>().health-=damage;
     }
+
+    public void SetStateToActive(int player)
+    {
+        CmdSetState(player);
+    }
+
+    [Command]
+    private void CmdSetState(int player)
+    {
+        if (player == 1)
+        {
+            GameManager._players["1"].GetComponent<PlayerDataTransmitter>().Player1stateActive = true;
+            GameManager._players["2"].GetComponent<PlayerDataTransmitter>().Player1stateActive = true;
+        }
+        else if (player == 2)
+        {
+            GameManager._players["1"].GetComponent<PlayerDataTransmitter>().Player2stateActive = true;
+            GameManager._players["2"].GetComponent<PlayerDataTransmitter>().Player2stateActive = true;
+        }
+    }
+    
 }
