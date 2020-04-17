@@ -9,6 +9,13 @@ public class Projectile : MonoBehaviour
     public Vector3 MovementDirection { set { _movementDirection = value; } }
     private int _id;
     
+    // References.
+    private AudioManager _audioManager;
+
+    private void Start() {
+        _audioManager = FindObjectOfType<AudioManager>();
+    }
+
     void Update() {
         transform.position += _movementDirection;
     }
@@ -22,6 +29,7 @@ public class Projectile : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().SetPlayerHit(_id);
             Destroy(gameObject);
         } else if (other.gameObject.CompareTag("Environment")) {
+            _audioManager.Play("sfx_wallHit");
             Destroy(gameObject);
         }
     }

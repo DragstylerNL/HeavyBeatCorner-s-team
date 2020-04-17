@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/FeatureScenes/Multiplayer.unity
     guid: 97b4f408f15e8da49a10913c33af59b4
+  - enabled: 1
+    path: Assets/_Scenes/Doppel_AddingSFX.unity
+    guid: a82fdd229209a574ab3ce6c2590bc39d
   m_configObjects: {}
