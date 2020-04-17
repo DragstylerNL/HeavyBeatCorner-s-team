@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\TheALoneDragon\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\TheALoneDragon\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_HeavyBeatProject.817821472.00" t="ExcludeRecursive" />
-    <e p="D:\!Werk\HeavyBeatCorner-s-team\HeavyBeatProject" t="IncludeRecursive">
+    <e p="C:\Users\vanDo\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vanDo\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_HeavyBeatProject.-1585784999.00" t="ExcludeRecursive" />
+    <e p="D:\Users\vanDo\Documents\GitHub\HeavyBeatCorner-s-team\HeavyBeatProject" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -21,6 +21,7 @@
             <e p="EnemyDeathMist.cs" t="Include" />
             <e p="EnemyShaderSpawn.cs" t="Include" />
           </e>
+          <e p="EnemyTracker.cs" t="Include" />
           <e p="Enums.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GameMechanics" t="Include">
@@ -31,6 +32,7 @@
           <e p="Invisible" t="Include">
             <e p="Ghostifier.cs" t="Include" />
           </e>
+          <e p="Locations.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="PlayerCollection.cs" t="Include" />
             <e p="PlayerDataTransmitter.cs" t="Include" />
