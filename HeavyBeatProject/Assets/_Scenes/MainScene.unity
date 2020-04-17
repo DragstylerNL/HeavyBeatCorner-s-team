@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5750,7 +5750,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316234649}
-  m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -2.208, y: 8.58, z: -15.087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5770,7 +5770,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 100
-  m_Range: 14.348396
+  m_Range: 75.7
   m_SpotAngle: 172.53738
   m_InnerSpotAngle: 8.026964
   m_CookieSize: 10
@@ -6211,7 +6211,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447928274}
-  m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -2.208, y: 8.58, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6231,7 +6231,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 100
-  m_Range: 14.348396
+  m_Range: 75.7
   m_SpotAngle: 172.53738
   m_InnerSpotAngle: 8.026964
   m_CookieSize: 10
@@ -7896,7 +7896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1793498797
 Light:
   m_ObjectHideFlags: 0
@@ -7909,7 +7909,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8313,7 +8313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1bc43f8199af34b8f7892bcf5ceaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountOfPlayers: 2
   _leewayTime: 0.8
   _players:
   - {fileID: 0}

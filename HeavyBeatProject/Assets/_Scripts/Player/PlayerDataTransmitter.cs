@@ -17,11 +17,13 @@ public class PlayerDataTransmitter : NetworkBehaviour
     
     private int lastKnownHealth = -1;
     private NetworkIdentity _identity;
+    public int id;
     private DayNightCycler _cycler;
 
     private void Start()
     {
         _identity = GetComponent<NetworkIdentity>();
+        id = int.Parse(_identity.netId.ToString()) - 1;
         _cycler = GameObject.Find("Directional Light ").GetComponent<DayNightCycler>();
     }
     

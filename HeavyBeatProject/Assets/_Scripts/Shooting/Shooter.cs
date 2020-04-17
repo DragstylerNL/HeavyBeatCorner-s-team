@@ -17,12 +17,14 @@ public class Shooter : MonoBehaviour
 
     void Start() {
         _audioManager = FindObjectOfType<AudioManager>();
-        _id = GetComponentInParent<PlayerId>().GetPlayerId();
+        //_id = GetComponentInParent<PlayerId>().GetPlayerId();
+        _id = GetComponent<PlayerDataTransmitter>().id;
         _currentBulletAmount = 3;
     }
     
     void Update() {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10f, Color.blue);
+        //TODO FIX ON PLAYER
+        Debug.DrawRay(transform.position, GetComponentInChildren<Camera>().transform.forward * 10f, Color.blue);
         if (Input.GetMouseButtonUp(0))
         {
             Shoot();
