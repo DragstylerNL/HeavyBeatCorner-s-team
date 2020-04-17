@@ -53,6 +53,10 @@ public class MistController : MonoBehaviour {
       newHeight.y -= _heightStep;
       _currentHeight = newHeight.y;
       print("Mist is now at " + newHeight.y);
+      if (_currentHeight < _dangerHeight) {
+         _audioManager.Play("sfx_heartBeat");
+         _audioManager.Play("sfx_gameOver");
+      }
       _mist.transform.position = newHeight;
    }
 
@@ -76,6 +80,7 @@ public class MistController : MonoBehaviour {
       
       if (_currentHeight < _dangerHeight) {
          _audioManager.Play("sfx_heartBeat");
+         _audioManager.Play("sfx_gameOver");
       }
       
 

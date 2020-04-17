@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class AudioManager : MonoBehaviour
     
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -36,8 +38,9 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Start() {
-        Play("sfx_backgroundNoise");
+        Play("sfx_themeSong");
     }
+
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {
