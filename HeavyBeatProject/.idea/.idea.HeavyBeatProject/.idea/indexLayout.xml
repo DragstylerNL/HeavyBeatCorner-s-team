@@ -20,7 +20,10 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.idea</Path>
+      <Path>.vs</Path>
+      <Path>Builds</Path>
       <Path>Library</Path>
+      <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
