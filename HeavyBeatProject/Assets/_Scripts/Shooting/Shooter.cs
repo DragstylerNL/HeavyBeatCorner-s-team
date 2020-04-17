@@ -11,20 +11,29 @@ public class Shooter : MonoBehaviour
     [SerializeField] private int _bulletAmount = 3;
     [SerializeField] private int _currentBulletAmount;
     [SerializeField] private int _id;
+    
+    // References
+    private AudioManager _audioManager;
 
-    void Start()
-    {
+    void Start() {
         Reload();
         _id = GetComponentInParent<PlayerId>().GetPlayerId();
+        _audioManager = FindObjectOfType<AudioManager>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+    
+    void Update() {
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10f, Color.blue);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             Shoot();
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            if (_currentBulletAmount <= 0) {
+                _audioManager.Play("sfx_gunCharging01");
+                return;
+            }
+            _audioManager.Play("sfx_gunCharging");
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
@@ -32,11 +41,14 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    private void Shoot()
-    {
-        if (_currentBulletAmount <= 0) return;
+    private void Shoot() {
+        _audioManager.Stop("sfx_gunCharging");
+        if (_currentBulletAmount <= 0) {
+            return;
+        }
             
         GameObject projectile = Instantiate(_projectile, transform.position, transform.rotation);
+        _audioManager.Play("sfx_gunFire02");
         projectile.GetComponent<Projectile>().SetPlayerId(_id);
         projectile.GetComponent<Projectile>().MovementDirection = transform.TransformDirection(Vector3.forward) * _projectileSpeed;
         _currentBulletAmount--;

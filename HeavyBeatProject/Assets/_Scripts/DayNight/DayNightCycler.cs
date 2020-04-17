@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DayNightCycler : MonoBehaviour
 {
-    [SerializeField] private Transform _sun;
+    [SerializeField] public Transform _sun;
     [SerializeField] private bool _cycle = true;
     [SerializeField] private float _speedDay = 0.5f;
     [SerializeField] private float _speedNight = 0.1f;
+    [SerializeField] private GameObject _glassObj;
+    private Material _material;
+    private Light _light;
     
     private float _currentSpeed;
     private Vector3 _rotation;
@@ -21,6 +20,8 @@ public class DayNightCycler : MonoBehaviour
     {
         _currentSpeed = _speedDay;
         _ghostifiers = FindObjectsOfType<Ghostifier>();
+        _material = _glassObj.GetComponent<MeshRenderer>().material;
+        _light = GetComponent<Light>();
     }
 
     void Update()
@@ -33,7 +34,6 @@ public class DayNightCycler : MonoBehaviour
             {
                 _isDay = !_isDay;
                 _currentSpeed = _speedNight;
-                VisiblePlayers(false);
             }
         }
         else
@@ -42,9 +42,15 @@ public class DayNightCycler : MonoBehaviour
             {
                 _isDay = !_isDay;
                 _currentSpeed = _speedDay;
-                VisiblePlayers(true);
             }
         }
+
+        if (_rotation.x < 180)
+        {
+            VisiblePlayers(true);
+        } else 
+            VisiblePlayers(false);
+        
         _sun.Rotate(_currentSpeed,0,0, Space.Self);
         _rotation = _sun.rotation.eulerAngles;
     }
@@ -55,5 +61,13 @@ public class DayNightCycler : MonoBehaviour
         {
             _ghostifiers[i].Ghostify(visible);
         }
+
+        float glassAlpha = visible ? 0.1f : 1f;
+        _material.SetFloat("_AlphaVal", glassAlpha);
+        if (visible)
+        {
+            _light.intensity = 1;
+        }
+        else _light.intensity = 0;
     }
 }
