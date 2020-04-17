@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -34,10 +35,7 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
-
-    private void Start() {
-        Play("sfx_backgroundNoise");
-    }
+    
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {

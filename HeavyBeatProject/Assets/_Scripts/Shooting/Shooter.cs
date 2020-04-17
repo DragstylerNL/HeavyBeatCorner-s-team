@@ -16,9 +16,9 @@ public class Shooter : MonoBehaviour
     private AudioManager _audioManager;
 
     void Start() {
-        Reload();
-        _id = GetComponentInParent<PlayerId>().GetPlayerId();
         _audioManager = FindObjectOfType<AudioManager>();
+        _id = GetComponentInParent<PlayerId>().GetPlayerId();
+        _currentBulletAmount = 3;
     }
     
     void Update() {
@@ -54,8 +54,8 @@ public class Shooter : MonoBehaviour
         _currentBulletAmount--;
     }
     
-    private void Reload()
-    {
+    private void Reload() {
+        _audioManager.Play("sfx_gunReload");
         _currentBulletAmount = _bulletAmount;
     }
 }

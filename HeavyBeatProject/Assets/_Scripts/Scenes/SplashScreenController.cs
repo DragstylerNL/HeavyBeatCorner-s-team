@@ -12,6 +12,7 @@ public class SplashScreenController : MonoBehaviour {
     {
         SplashScreen.Begin();
         _source.clip = _clip;
+        _source.volume = 0.5f;
         _source.Play();
         while (!SplashScreen.isFinished) {
             SplashScreen.Draw();
