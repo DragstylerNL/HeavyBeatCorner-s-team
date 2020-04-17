@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour {
     }
 
     public void StartGame() {
-        SceneManager.LoadSceneAsync("Doppel_AddingSFX");
+        SceneManager.LoadSceneAsync("MainScene");
         _audioManager.Stop("sfx_themeSong");
         _audioManager.Play("sfx_backgroundNoise");
     }

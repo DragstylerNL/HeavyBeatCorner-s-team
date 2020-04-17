@@ -9,6 +9,6 @@ public class SceneResetter : MonoBehaviour {
     }
 
     private void ResetGame() {
-        SceneManager.LoadSceneAsync("Doppel_MainMenu");
+        SceneManager.LoadSceneAsync("MainScene");
     }
 }

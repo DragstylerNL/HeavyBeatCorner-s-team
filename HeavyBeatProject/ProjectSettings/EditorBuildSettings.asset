@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/Doppel_MainMenu.unity
+    guid: 8a5a18a7df7cd78439035137b30df565
+  - enabled: 1
     path: Assets/_Scenes/MainScene.unity
     guid: 840858811f54acb4f902021121557a36
-  - enabled: 1
-    path: Assets/_Scenes/Doppel_AddingSFX.unity
-    guid: a82fdd229209a574ab3ce6c2590bc39d
   m_configObjects: {}
