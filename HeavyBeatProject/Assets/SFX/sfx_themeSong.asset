@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08eec2bcbb3c1434e811051c3038f107, type: 3}
-  m_Name: sfx_gameOver
+  m_Name: sfx_themeSong
   m_EditorClassIdentifier: 
-  name: sfx_gameOver
-  clip: {fileID: 8300000, guid: 6fedd42a57a504d469e15c43d123d15a, type: 3}
+  name: sfx_themeSong
+  clip: {fileID: 8300000, guid: 0c8ca390bc7c9974ca31d2f7eca54bee, type: 3}
   volume: 0.2
   pitch: 1
   loop: 0
