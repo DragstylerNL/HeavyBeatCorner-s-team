@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
@@ -6,35 +8,46 @@ public class PlayerDataTransmitter : NetworkBehaviour
 {
     public int damage = 10;
     public Text healthtText;
+    public Text StateText;
 
     [SyncVar] public int health = 100;
-    [SyncVar] public bool Player1stateActive = false;
-    [SyncVar] public bool Player2stateActive = false;
+    [SyncVar] public int Playerstate = 0;
+    private bool _beenActivated = false;
+    
     private int lastKnownHealth = -1;
+    private NetworkIdentity _identity;
 
-        private void Update()
+    private void Start()
+    {
+        _identity = GetComponent<NetworkIdentity>();
+    }
+
+    private void Update()
     {
         if (lastKnownHealth != health)
         {
             healthtText.text = health.ToString();
             lastKnownHealth = health;
         }
+
+        StateText.text = Playerstate.ToString();
         
         if (Input.GetKeyDown(KeyCode.P))
         {
             TakeDamage();
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SetStateToActive();
+        }
     }
 
     public void TakeDamage()
     {
-        if (isServer)
+        health = int.Parse(healthtText.text) - damage;
+        if (!isServer)
         {
-            health = int.Parse(healthtText.text) - damage;
-        }
-        else
-        {
-            health = int.Parse(healthtText.text) - damage;
             CmdFunction();
         }
     }
@@ -46,24 +59,40 @@ public class PlayerDataTransmitter : NetworkBehaviour
         GameManager._players["2"].GetComponent<PlayerDataTransmitter>().health-=damage;
     }
 
-    public void SetStateToActive(int player)
+    public void SetStateToActive()
     {
-        CmdSetState(player);
+        if (_beenActivated) return;
+        _beenActivated = true;
+        Playerstate++;
+        if (!isServer)
+        {
+            CmdSetState(1);
+        }
+        StartCoroutine(StateTimer());
     }
 
     [Command]
-    private void CmdSetState(int player)
+    private void CmdSetState(int value)
     {
-        if (player == 1)
+        GameManager._players["1"].GetComponent<PlayerDataTransmitter>().Playerstate+=value;
+        GameManager._players["2"].GetComponent<PlayerDataTransmitter>().Playerstate+=value;
+    }
+
+    IEnumerator StateTimer()
+    {
+        yield return new WaitForSeconds(0.8f);
+        _beenActivated = false;
+        Playerstate--;
+        if (!isServer)
         {
-            GameManager._players["1"].GetComponent<PlayerDataTransmitter>().Player1stateActive = true;
-            GameManager._players["2"].GetComponent<PlayerDataTransmitter>().Player1stateActive = true;
+            CmdSetState(-1);
         }
-        else if (player == 2)
-        {
-            GameManager._players["1"].GetComponent<PlayerDataTransmitter>().Player2stateActive = true;
-            GameManager._players["2"].GetComponent<PlayerDataTransmitter>().Player2stateActive = true;
-        }
+    }
+
+    [ClientRpc]
+    private void RpcSetState()
+    {
+        Playerstate = 1;
     }
     
 }
