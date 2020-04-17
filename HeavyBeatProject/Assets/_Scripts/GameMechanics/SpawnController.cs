@@ -12,6 +12,16 @@ public class SpawnController : MonoBehaviour {
 
     [SerializeField] private List<GameObject> _enemies = new List<GameObject>();
 
+    // Action
+    public Action<GameObject> EnemySpawned;
+
+    // References.
+    private AudioManager _audioManager;
+    
+    private void Start() {
+        _audioManager = FindObjectOfType<AudioManager>();
+    }
+    
     private void Update() {
          if (Input.GetKeyDown(KeyCode.S)) {
              SpawnEnemy();
@@ -55,33 +65,7 @@ public class SpawnController : MonoBehaviour {
         {
             Destroy(_enemies[i]);
         }
-
-    // Action
-    public Action<GameObject> EnemySpawned;
-
-    // References.
-    private AudioManager _audioManager;
-
-    private void Start() {
-        _audioManager = FindObjectOfType<AudioManager>();
-    }
-
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.B)) {
-            SpawnEnemy();
-        }
-    }
-
-    private void SpawnEnemy() {
-        _audioManager.Play("sfx_enemySpawn");
-        GameObject enemy = Instantiate(GetRandomEnemy());
-        enemy.transform.position = GetRandomLocation();
-        AddEnemyToList(enemy);
-
-        if (EnemySpawned != null) {
-            EnemySpawned(enemy);
-        }
+        _enemies = new List<GameObject>();
     }
 
     // Adds given enemy to our enemy list.

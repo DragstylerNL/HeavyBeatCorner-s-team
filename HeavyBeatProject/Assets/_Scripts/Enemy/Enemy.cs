@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
     private AudioManager _audioManager;
 
     private void Start() {
-        InitializePlayerHitMap();
+        //InitializePlayerHitMap();
         _audioManager = FindObjectOfType<AudioManager>();
     }
 
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour {
     {
         _iGotHit = true;
         _isCountingLeeway = true;
+        _audioManager.Play("sfx_enemyHit");
     }
     
     /*private void InitializePlayerHitMap() {
@@ -83,7 +84,7 @@ public class Enemy : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    private bool AllPlayerHit() {
+    /*private bool AllPlayerHit() {
         for (int i = 0; i < _amountOfPlayers; i++) {
             if (!_playerHitMap[_players[i]]) {
                 print("Player " + (i + 1) + " hit is " + _playerHitMap[_players[i]]);

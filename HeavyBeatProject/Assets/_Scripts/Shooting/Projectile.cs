@@ -26,11 +26,39 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Enemy")) {
-            other.gameObject.GetComponent<Enemy>().GotHit();
-            Destroy(gameObject);
+            //other.gameObject.GetComponent<Enemy>().GotHit();
+            //Destroy(gameObject);
+            StartCoroutine(CheckActiveState(other.gameObject));
         } else if (other.gameObject.CompareTag("Environment")) {
             _audioManager.Play("sfx_wallHit");
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator CheckActiveState(GameObject enemy)
+    {
+        float timer = 1f;
+        PlayerDataTransmitter player1 = GameManager._players[("1")].GetComponent<PlayerDataTransmitter>();
+        PlayerDataTransmitter player2 = GameManager._players[("2")].GetComponent<PlayerDataTransmitter>();
+        
+        if (_id == 0)
+        {
+            player1.SetStateToActive();
+        }
+        else
+        {
+            player2.SetStateToActive();
+        }
+        
+        while (timer >= 0f)
+        {
+            timer -= Time.deltaTime;
+            if (player1.Playerstate == 2)
+            {
+                Destroy(enemy);
+                StopCoroutine(CheckActiveState(null));
+            }
+        }
+        yield return new WaitForEndOfFrame();
     }
 }
